@@ -38,7 +38,7 @@ exports.handler = async (event) => {
     // Scan operation parameters
     const scanParams = {
       TableName: groupsTable,
-      Limit: 3,
+      Limit: limit,
       ExlclusiveStartKey: nextKey,
     }
     console.log('Scan params: ', scanParams)
@@ -107,3 +107,11 @@ function parseLimitParameter(event) {
     
 }
   
+function getQueryParameters(event, name) {
+    const queryParams = event.queryStringParameters
+    if (!queryParams) {
+        return undefined
+    }
+
+    return queryParams[name]
+}
