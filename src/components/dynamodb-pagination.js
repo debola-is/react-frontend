@@ -5,6 +5,10 @@ const groupsTable = process.env.GROUP_TABLE
 
 
 exports.handler = async (event) => {
+    // TODO: Read and parse "limit" and "nextKey" parameters from query parameters
+    // let nextKey // Next key to continue scan operation if necessary
+    // let limit // Maximum number of elements to return
+  
     console.log('Processing event: ', event)
     let limit
     let nextKey
@@ -26,10 +30,7 @@ exports.handler = async (event) => {
         }
     }
     
-    // TODO: Read and parse "limit" and "nextKey" parameters from query parameters
-    // let nextKey // Next key to continue scan operation if necessary
-    // let limit // Maximum number of elements to return
-  
+
     // HINT: You might find the following method useful to get an incoming parameter value
     // getQueryParameter(event, 'param')
   
@@ -78,7 +79,7 @@ exports.handler = async (event) => {
 //decodes it and returns the value as a JSON object.
 
 function parseNextKeyParameter(event) {
-    const nextKeyStr = getQueryParameters(event, 'nextKey')
+    const nextKeyStr = getQueryParameters(event, 'nextkey')
     if (!nextKeyStr){
         return undefined
     }
